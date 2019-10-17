@@ -1,4 +1,3 @@
-//Here is our array of students. They are all objects! You can tell by the curly brackets and the key value pairs.
 const students = [
     {
         name: "Chris Miller",
@@ -74,37 +73,25 @@ const students = [
     }
 ]
 
-//We are initializing our variable named studentClass outside of our function. It does not contain a value yet! If we console.log it it will show up as null. Spooky!
-let studentClass;
-
-//This is our function. It takes four parameters: name, subject, info, score. First we start off with a conditional statement that checks whether the score is above or equal to 70 (a passing score) and if not, a failing score. We're setting those values to strings so we can use interpolation to set the class of the h1 to either passing or failing. Then, we return a string of HTML that takes the arguments we have passed in to the function.
-const createStudentComponent = function (name, subject, info, score) {
-    if (score >= 70) {
-        studentClass = "passing"
-    }
-    else {
-        studentClass = "failing"
-    }
+const createStudentComponent = (name, subject, info) => {
     return `
         <div class="student">
-            <h1 class="${studentClass}">${name}</h1>
-            <section class="cohort-section">${subject}</section>
-            <aside>
-                ${info}
-            </aside>
+            <h1>${name}</h1>
+            <section>${subject}</section>
+            <aside>${info}</aside>
         </div>
     `
 }
 
-//This is our variable that is an empty string. It exists outside of our loop so we can build on to it with each iteration of the loop.
-let studentHTML = "";
-//Let's get loopy! Our for loop iterates through our array of objects named students. For every iteration, we are going to call our function and pass in the student we are iterating over's values. We save that to the variable singleStudentHTML. Then we use our handy += to add that on to our empty string that is the variable studentHTML. If you look in the console, you can see that HTML displayed.
-for (let i = 0; i < students.length; i++) {
-    const singleStudentHTML = createStudentComponent(
-        students[i].name, 
-        students[i].subject, 
-        students[i].info, 
-        students[i].score);
-    studentHTML += singleStudentHTML;
-    console.log(studentHTML);
+for (const student of students) {
+    let studentComponent = ""
+    if (student.score >= 70) {
+    studentComponent = document.getElementByClassName('.students-name').style.color = "blue";
+    } 
+    
+    else {
+        studentComponent = document.getElementByClassName('.students-name').style.color = "red";
+    }
 }
+
+console.log();
