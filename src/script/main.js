@@ -73,25 +73,30 @@ const students = [
     }
 ]
 
-const createStudentComponent = (name, subject, info) => {
-    return `
+
+const createStudentComponent = (students) => {
+    let htmlText = ""
+    for(let i=0; i < students.length; i++) {
+        if (students[i].score >= 60) {
+            studentComponent = "passing";
+        } else {
+            studentComponent = "failing";
+        }
+        htmlText += `
         <div class="student">
-            <h1>${name}</h1>
-            <section>${subject}</section>
-            <aside>${info}</aside>
+        <h1 class="xx-large ${studentComponent}">${students[i].name}</h1>
+        <section class="bordered dashed section--padded">${students[i].subject}</section>
+        <aside class="pushRight">${students[i].info}</aside>
         </div>
-    `
+        `
+        }
+    return htmlText;
 }
 
-for (const student of students) {
-    let studentComponent = ""
-    if (student.score >= 70) {
-    studentComponent = document.getElementByClassName('.students-name').style.color = "blue";
-    } 
-    
-    else {
-        studentComponent = document.getElementByClassName('.students-name').style.color = "red";
-    }
-}
+const studentContainer = document.querySelector("#container") //connects html and javascript
+studentContainer.innerHTML = createStudentComponent(students); //places javascript changes in html
 
-console.log();
+
+
+
+
