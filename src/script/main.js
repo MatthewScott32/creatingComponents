@@ -74,11 +74,11 @@ const students = [
 ]
 
 
-const createStudentComponent = (students) => {
-    let htmlText = ""
-    for(let i=0; i < students.length; i++) {
-        if (students[i].score >= 60) {
-            studentComponent = "passing";
+const createStudentComponent = (students) => {          //creation of function name
+    let htmlText = ""                                   //space to place results
+    for(let i=0; i < students.length; i++) {            //loop iteration of array students
+        if (students[i].score >= 60) {                  
+            studentComponent = "passing";               //decides if passing or failing goes into h1 below
         } else {
             studentComponent = "failing";
         }
@@ -90,7 +90,7 @@ const createStudentComponent = (students) => {
         </div>
         `
         }
-    return htmlText;
+    return htmlText;                                    //creates htmlText with the html code
 }
 
 const studentContainer = document.querySelector("#container") //connects html and javascript
